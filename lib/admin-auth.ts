@@ -38,7 +38,3 @@ export async function isAuthenticated() {
   const sessionValue = cookieStore.get(SESSION_COOKIE)?.value;
   return sessionValue === ADMIN_SESSION_TOKEN;
 }
-
-export async function getSessionToken() {
-  return ADMIN_SESSION_TOKEN;
-}

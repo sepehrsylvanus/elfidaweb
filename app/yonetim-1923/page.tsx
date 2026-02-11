@@ -11,18 +11,16 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const handleAdminLogin = async () => {
     setLoading(true);
-    await axios
-      .post("/api/admin-auth", { password })
-      .then((res) => {
-        console.log(res.data.success);
-        if (res.data.success) {
-          router.push("/yonetim-1923/panel");
-        }
-      })
-      .catch((err) => {
-        toast.error(err.response?.data?.error || "Giriş başarısız");
-      })
-      .finally(() => setLoading(false));
+    try {
+      const res = await axios.post("/api/admin-auth", { password });
+      if (res.data.success) {
+        router.push("/yonetim-1923/panel");
+      }
+    } catch (err: any) {
+      toast.error(err.response?.data?.error || "Giriş başarısız");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

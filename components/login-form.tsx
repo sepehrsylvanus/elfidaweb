@@ -45,7 +45,13 @@ export function LoginForm({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-2">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit();
+          }}
+          className="space-y-2"
+        >
           <Label htmlFor="password">Şifre</Label>
           <Input
             id="password"
@@ -57,11 +63,11 @@ export function LoginForm({
             autoFocus
             className="mb-2"
           />
-        </div>
-        {error && <p className="text-sm text-destructive">{error}</p>}
-        <Button onClick={onSubmit} className="w-full" disabled={loading}>
-          {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
-        </Button>
+          {error && <p className="text-sm text-destructive">{error}</p>}
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
+          </Button>
+        </form>
       </CardContent>
     </Card>
   );

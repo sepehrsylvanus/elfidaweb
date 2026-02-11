@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSessionToken, verifyPassword } from "@/lib/admin-auth";
+import { verifyPassword } from "@/lib/admin-auth";
 import { SESSION_COOKIE } from "@/constants";
 
 export const POST = async (req: Request) => {
@@ -10,8 +10,13 @@ export const POST = async (req: Request) => {
       return NextResponse.json({ error: "Yetkisiz" }, { status: 401 });
     }
 
+    const sessionToken = process.env.ADMIN_SESSION_TOKEN ?? "";
+    if (!sessionToken) {
+      throw new Error("Missing ADMIN_SESSION_TOKEN in environment variables.");
+    }
+
     const response = NextResponse.json({ success: true });
-    response.cookies.set(SESSION_COOKIE, await getSessionToken(), {
+    response.cookies.set(SESSION_COOKIE, sessionToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
