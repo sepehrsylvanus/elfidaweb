@@ -124,3 +124,50 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Toastify theme alignment */
+.toastify-toast {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+}
+
+.toastify-body {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.toastify-progress {
+  background: var(--primary);
+}
+
+.Toastify__close-button {
+  color: var(--muted-foreground);
+  opacity: 0.8;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+.Toastify__toast-icon svg {
+  fill: var(--primary);
+}
+
+.Toastify__toast--success {
+  border-color: var(--primary);
+}
+
+.Toastify__toast--info {
+  border-color: var(--secondary);
+}
+
+.Toastify__toast--warning {
+  border-color: var(--accent);
+}
+
+.Toastify__toast--error {
+  border-color: var(--destructive);
+}

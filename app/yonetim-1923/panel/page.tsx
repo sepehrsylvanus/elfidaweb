@@ -1,18 +1,12 @@
-import { redirect } from "next/navigation"
-import { isAuthenticated } from "@/lib/admin-auth"
-import { AdminDashboard } from "@/components/admin-dashboard"
-
-export const metadata = {
-  title: "Yönetim Paneli",
-  robots: "noindex, nofollow",
-}
+import { AdminDashboard } from "@/components/admin-dashboard";
+import { isAuthenticated } from "@/lib/admin-auth";
+import { redirect } from "next/navigation";
 
 export default async function AdminPanelPage() {
-  const authenticated = await isAuthenticated()
-
+  const authenticated = await isAuthenticated();
   if (!authenticated) {
-    redirect("/yonetim-1923")
+    redirect("/yonetim-1923");
   }
 
-  return <AdminDashboard />
+  return <AdminDashboard />;
 }
