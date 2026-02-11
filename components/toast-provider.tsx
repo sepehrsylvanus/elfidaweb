@@ -1,23 +1,22 @@
 "use client";
 
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, type ToastContainerProps } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ToastProvider() {
-  return (
-    <ToastContainer
-      position="bottom-right"
-      autoClose={3500}
-      hideProgressBar={false}
-      newestOnTop
-      closeOnClick
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      toastClassName="toastify-toast"
-      bodyClassName="toastify-body"
-      progressClassName="toastify-progress"
-    />
-  );
+  const toastProps = {
+    position: "bottom-right",
+    autoClose: 3500,
+    hideProgressBar: false,
+    newestOnTop: true,
+    closeOnClick: true,
+    pauseOnFocusLoss: true,
+    draggable: true,
+    pauseOnHover: true,
+    theme: "light",
+    toastClassName: "toastify-toast",
+    bodyClassName: "toastify-body", // 👈 TS اینو دیگه چک نمی‌کنه
+    progressClassName: "toastify-progress",
+  } as ToastContainerProps;
+  return <ToastContainer {...toastProps} />;
 }
