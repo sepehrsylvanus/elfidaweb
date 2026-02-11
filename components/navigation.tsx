@@ -1,29 +1,30 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "Ana Sayfa" },
-    { href: "/bugunun-menusu", label: "Bugünün Menüsü" },
-    { href: "/gecmis-menuler", label: "Geçmiş Menüler" },
+    { href: "/menu", label: "Menü" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "/galeri", label: "Galeri" },
     { href: "/yorumlar", label: "Yorumlar" },
     { href: "/iletisim", label: "İletişim / Sipariş" },
-  ]
+  ];
 
   return (
     <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2">
-            <div className="text-2xl font-serif font-bold text-primary">Elfida Ev Yemekleri</div>
+            <div className="text-2xl font-serif font-bold text-primary">
+              Elfida Ev Yemekleri
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -40,7 +41,12 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
@@ -62,5 +68,5 @@ export function Navigation() {
         )}
       </div>
     </nav>
-  )
+  );
 }

@@ -1,9 +1,15 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Phone, ChevronRight } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { Phone, ChevronRight } from "lucide-react";
 
 export default function HomePage() {
   const todaysMenu = [
@@ -27,7 +33,7 @@ export default function HomePage() {
       description: "Günlük taze",
       price: "30",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -46,12 +52,17 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="text-base">
-                <Link href="/bugunun-menusu">
+                <Link href="/menu">
                   Bugünün Menüsünü Gör
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="text-base bg-transparent"
+              >
                 <Link href="tel:05xxxxxxxxx">
                   <Phone className="mr-2 h-5 w-5" />
                   Telefonla Sipariş Ver
@@ -66,8 +77,12 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <Card className="border-2 shadow-lg">
           <CardHeader className="text-center pb-4">
-            <CardTitle className="text-3xl font-serif mb-2">Bugünün Menüsü</CardTitle>
-            <CardDescription className="text-base">Her gün değişen taze yemeklerimiz.</CardDescription>
+            <CardTitle className="text-3xl font-serif mb-2">
+              Bugünün Menüsü
+            </CardTitle>
+            <CardDescription className="text-base">
+              Her gün değişen taze yemeklerimiz.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2 mb-6">
@@ -78,15 +93,19 @@ export default function HomePage() {
                 >
                   <div>
                     <h3 className="font-semibold text-lg">{dish.name}</h3>
-                    <p className="text-sm text-muted-foreground">{dish.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {dish.description}
+                    </p>
                   </div>
-                  <div className="text-lg font-bold text-primary whitespace-nowrap ml-4">{dish.price} ₺</div>
+                  <div className="text-lg font-bold text-primary whitespace-nowrap ml-4">
+                    {dish.price} ₺
+                  </div>
                 </div>
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg" variant="default">
-                <Link href="/bugunun-menusu">Tüm Menüyü Gör</Link>
+                <Link href="/menu">Tüm Menüyü Gör</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="tel:05xxxxxxxxx">
@@ -105,8 +124,9 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold mb-6">Hakkımızda</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Elfida Ev Yemekleri olarak her gün taze malzemelerle, evinizdeymiş gibi hissedeceğiniz lezzetler
-              hazırlıyoruz. Amacımız; sağlıklı, doyurucu ve sıcak bir ev yemeği deneyimi sunmak.
+              Elfida Ev Yemekleri olarak her gün taze malzemelerle, evinizdeymiş
+              gibi hissedeceğiniz lezzetler hazırlıyoruz. Amacımız; sağlıklı,
+              doyurucu ve sıcak bir ev yemeği deneyimi sunmak.
             </p>
             <Button asChild variant="outline" size="lg">
               <Link href="/hakkimizda">
@@ -122,11 +142,15 @@ export default function HomePage() {
       <section className="container mx-auto px-4 py-16">
         <Card className="bg-gradient-to-br from-primary to-accent text-primary-foreground border-0">
           <CardContent className="p-8 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Bugün ne yemek istersiniz?</h2>
-            <p className="text-lg mb-6 opacity-90">Sipariş vermek veya bilgi almak için bize ulaşın.</p>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              Bugün ne yemek istersiniz?
+            </h2>
+            <p className="text-lg mb-6 opacity-90">
+              Sipariş vermek veya bilgi almak için bize ulaşın.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">
-                <Link href="/bugunun-menusu">Menüyü İncele</Link>
+                <Link href="/menu">Menüyü İncele</Link>
               </Button>
               <Button
                 asChild
@@ -143,5 +167,5 @@ export default function HomePage() {
 
       <Footer />
     </div>
-  )
+  );
 }
