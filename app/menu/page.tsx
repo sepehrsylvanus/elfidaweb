@@ -1,16 +1,16 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Phone, MessageCircle } from "lucide-react"
-import { getMenu } from "@/lib/admin-data"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { Phone, MessageCircle } from "lucide-react";
+import { getMenu } from "@/lib/admin-data";
 
 export const metadata = {
   title: "Bugünün Menüsü - Elfida Ev Yemekleri",
   description: "Her gün güncellenen ev yemekleri menümüz.",
-}
+};
 
 export default async function TodaysMenuPage() {
   const today = new Date().toLocaleDateString("tr-TR", {
@@ -18,9 +18,9 @@ export default async function TodaysMenuPage() {
     year: "numeric",
     month: "long",
     day: "numeric",
-  })
+  });
 
-  const menu = await getMenu()
+  const menu = await getMenu();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -30,9 +30,15 @@ export default async function TodaysMenuPage() {
         <div className="bg-gradient-to-br from-primary/10 to-accent/10 py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Bugünün Menüsü</h1>
-              <p className="text-lg text-muted-foreground mb-2">Her gün güncellenen ev yemekleri menümüz.</p>
-              <div className="inline-block px-4 py-2 bg-card rounded-lg border text-sm font-medium">{today}</div>
+              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+                Bugünün Menüsü
+              </h1>
+              <p className="text-lg text-muted-foreground mb-2">
+                Her gün güncellenen ev yemekleri menümüz.
+              </p>
+              <div className="inline-block px-4 py-2 bg-card rounded-lg border text-sm font-medium">
+                {today}
+              </div>
             </div>
           </div>
         </div>
@@ -42,7 +48,9 @@ export default async function TodaysMenuPage() {
             {menu.map((section, sectionIndex) => (
               <Card key={sectionIndex}>
                 <CardHeader>
-                  <CardTitle className="text-2xl font-serif">{section.category}</CardTitle>
+                  <CardTitle className="text-2xl font-serif">
+                    {section.category}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -53,16 +61,22 @@ export default async function TodaysMenuPage() {
                       >
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-semibold text-lg">{dish.name}</h3>
+                            <h3 className="font-semibold text-lg">
+                              {dish.name}
+                            </h3>
                             {dish.badge && (
                               <Badge variant="secondary" className="text-xs">
                                 {dish.badge}
                               </Badge>
                             )}
                           </div>
-                          <p className="text-sm text-muted-foreground">{dish.description}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {dish.description}
+                          </p>
                         </div>
-                        <div className="text-xl font-bold text-primary whitespace-nowrap">{dish.price} ₺</div>
+                        <div className="text-xl font-bold text-primary whitespace-nowrap">
+                          {dish.price} ₺
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -73,7 +87,8 @@ export default async function TodaysMenuPage() {
             <Card className="bg-muted/50">
               <CardContent className="p-6">
                 <p className="text-sm text-muted-foreground text-center mb-4">
-                  Menümüz günlük olarak değişmektedir. Detaylı bilgi ve sipariş için lütfen bizimle iletişime geçin.
+                  Menümüz günlük olarak değişmektedir. Detaylı bilgi ve sipariş
+                  için lütfen bizimle iletişime geçin.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button asChild size="lg">
@@ -97,5 +112,5 @@ export default async function TodaysMenuPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

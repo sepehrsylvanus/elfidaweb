@@ -1,11 +1,15 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Playfair_Display, Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import ToastProvider from "@/components/toast-provider";
+import "./globals.css";
 
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" })
-const inter = Inter({ subsets: ["latin"] })
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Elfida Ev Yemekleri - Her Gün Taze Ev Yemekleri, Çekmeköy",
@@ -29,19 +33,23 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
-      <body className={`${inter.className} ${playfair.variable} font-sans antialiased`}>
+    <html lang="tr" suppressHydrationWarning>
+      <body
+        className={`${inter.className} ${playfair.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {children}
+        <ToastProvider />
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
